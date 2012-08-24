@@ -8,7 +8,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.support.RestGatewaySupport;
 
-@Service
 public class AuthorizationCheckerImpl extends RestGatewaySupport implements AuthorizationChecker {
 
 	private String oAuth2ServerUrl;
