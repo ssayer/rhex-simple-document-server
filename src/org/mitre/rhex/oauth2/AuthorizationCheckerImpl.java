@@ -11,6 +11,8 @@ import org.springframework.web.client.support.RestGatewaySupport;
 @Service
 public class AuthorizationCheckerImpl extends RestGatewaySupport implements AuthorizationChecker {
 
+	private String oAuth2ServerUrl;
+	
 	public boolean checkAuthorization(String clientId, String token) {
 		Map<String, String> params = new HashMap<String, String>();
 		params.put("client_id", clientId);
@@ -18,4 +20,13 @@ public class AuthorizationCheckerImpl extends RestGatewaySupport implements Auth
 		ResponseEntity<Void> response = getRestTemplate().getForEntity("http://localhost:8080/rhex-oauth2-server/oauth/token?client_id={client_id}&token={token}", Void.class, params);
 		return response.getStatusCode() == HttpStatus.OK;
 	}
+	
+	public void setOAuth2ServerUrl(String url) {
+		this.oAuth2ServerUrl = url;
+	}
+	
+	public String getOAuth2ServerUrl() {
+		return this.oAuth2ServerUrl;
+	}
+	
 }

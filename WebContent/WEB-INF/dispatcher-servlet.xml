@@ -17,6 +17,9 @@
 	<rabbit:queue id="documents" name="documents"/>
         <context:component-scan base-package="org.mitre.rhex" ></context:component-scan>
   
+  <bean id="authChecker" class="org.mitre.rhex.oauth2.AuthorizationCheckerImpl">
+    <property name="oAuth2ServerUrl" value="http://localhost:8080/oauth/token" />
+  </bean>
     
 	<bean id="connectionFactory"
       class="org.springframework.amqp.rabbit.connection.CachingConnectionFactory">
